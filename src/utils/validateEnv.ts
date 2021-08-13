@@ -9,6 +9,11 @@ export const validateEnv = () => {
         return false;
     }
 
+    if(!process.env.PREFIX) {
+        console.warn("Missing Prefix, check your ENV");
+        return false;
+    }
+
     // if all envs pass, return true
     return true;
 }
