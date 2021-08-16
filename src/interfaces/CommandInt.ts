@@ -5,6 +5,7 @@ export interface BaseCommandInt {
     description: string;
     cooldown?: number;
     usage?: string;
+    aliases?: string[];
 
     // run: ((message: Message) => Promise<void>) 
     // | ((message: Message, args: string[]) => Promise<void>)
