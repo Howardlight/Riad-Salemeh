@@ -3,3 +3,4 @@ package-lock.json
 /prod/
 .env
 tsconfig.json
+/.idea/
