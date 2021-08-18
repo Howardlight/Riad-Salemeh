@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node -r dotenv/config ./prod/index.js",
-    "postinstall": "tsc && rm -v -rf src"
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "",
