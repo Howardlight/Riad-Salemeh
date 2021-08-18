@@ -9,7 +9,6 @@ export const onMessage = async (message: Message, args?: string[]) => {
     // if message is from bot, ignore
     if(message.author.bot) return;
 
-    console.log(args);
 
     // handles Commands
     for(const Command of CommandList) {
