@@ -55,18 +55,14 @@ export const help: CommandInt = {
             message.reply("That\'s not a valid command.");
         } else {
 
-
-            console.log(SearchedCommand);
-
+            // Adds the Aspects of the found command to the toBePushed data
             data.push(`**Name**: ${SearchedCommand?.name}`);
-
             if(SearchedCommand?.aliases) data.push(`**aliases**: ${SearchedCommand.aliases.join(", ")}`);
             data.push(`**Description**: ${SearchedCommand?.description}`);
             if(SearchedCommand?.usage) data.push(`**Usage**: ${prefix}${SearchedCommand.name} ${SearchedCommand.usage}`);
-
             data.push(`**Cooldown**: ${SearchedCommand?.cooldown || 3} second(s)`);
 
-
+            // sends the info about the command
             message.channel.send(data.join("\n").toString());
         }
 
