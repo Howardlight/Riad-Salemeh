@@ -15,7 +15,20 @@ export const help: CommandInt = {
         // 1 arg, that being the command declared by user
         if(args.length === 1) {
             data.push(`Here's a list of all my commands: \n`);
-            data.push(CommandList.map(command => command.name).join(", "));
+
+
+            // ORIGINAL FORM OF THE COMMAND WITHOUT THE FILTERING
+            // data.push(CommandList.map(command => command.name).join(", "));
+
+            // Filters through the CommandList, looks for certain commands then removes them from visibility
+            var finalCommandList = CommandList.reduce((result: string[], element: CommandInt) => {
+                if(element.name !== "list"){
+                    result.push(element.name);
+                }
+                return result;
+            }, []);
+
+            data.push(finalCommandList.join(", "));
             data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
 
 
