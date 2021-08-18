@@ -30,9 +30,32 @@ export const help: CommandInt = {
                 });
         }
 
-        
+
+        // Grabs the first arg from command call,
+        // looks for it in CommandList,
+        // if found return its info
+        // else prompt not found
+        // console.log(args);
+        var argument: CommandInt["name"] = args[1];
+        var SearchedCommand = CommandList.find( el => el["name"] === argument);
+        if(SearchedCommand === undefined || SearchedCommand.name === "list") {
+            message.reply("That\'s not a valid command.");
+        } else {
 
 
+            console.log(SearchedCommand);
+
+            data.push(`**Name**: ${SearchedCommand?.name}`);
+
+            if(SearchedCommand?.aliases) data.push(`**aliases**: ${SearchedCommand.aliases.join(", ")}`);
+            data.push(`**Description**: ${SearchedCommand?.description}`);
+            if(SearchedCommand?.usage) data.push(`**Usage**: ${prefix}${SearchedCommand.name} ${SearchedCommand.usage}`);
+
+            data.push(`**Cooldown**: ${SearchedCommand?.cooldown || 3} second(s)`);
+
+
+            message.channel.send(data.join("\n").toString());
+        }
 
     }
 }
