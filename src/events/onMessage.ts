@@ -12,6 +12,15 @@ export const onMessage = async (message: Message, args?: string[]) => {
 
 
     // handles Commands
+    
+    // NOTE: Hypothetical better way to implement this is
+    // to use a find command, which will autolook for the command in CommandList
+    // without having to iterate over each and every command
+    // to check if it is the right one
+    // TODO: implement a better way to look for commands
+    // NOTE: the cooldown is botched as shit, someone could spam the bot
+    // and it'll lag the shit out
+    // need to find a way to circumvent that
     for(const Command of CommandList) {
         if (message.content.startsWith(prefix + Command.name)) {
 
