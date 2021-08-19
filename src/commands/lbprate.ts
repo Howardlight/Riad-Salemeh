@@ -35,6 +35,7 @@ const getWebsiteData = async () => {
 export const lbprate: CommandInt = {
     name: "lbprate",
     description: "use Fetch and Cheerio to get the LBP rate",
+    cooldown: 30,
     run: async (message: Message) => {
 
         const buyRate = await getWebsiteData();
