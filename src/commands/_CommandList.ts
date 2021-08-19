@@ -4,5 +4,6 @@ import { link } from "./link";
 import { list } from "./list";
 import { lbprate } from "./lbprate";
 import { help } from "./help";
+import { getUptime } from "./getUptime";
 
-export const CommandList: CommandInt[] = [github, link, list, lbprate, help];
+export const CommandList: CommandInt[] = [github, link, list, lbprate, help, getUptime];
