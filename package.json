@@ -6,14 +6,18 @@
   "scripts": {
     "build": "tsc",
     "start": "node -r dotenv/config ./prod/index.js",
-    "postinstall": "tsc"
+    "postinstall": "tsc",
+    "deployCommands": "node -r dotenv/config ./prod/utils/deploy-commands.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/builders": "^0.5.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
     "@types/cheerio": "^0.22.30",
     "cheerio": "^1.0.0-rc.10",
+    "discord-api-types": "^0.22.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "fetch": "^1.1.0"
@@ -22,5 +26,7 @@
     "@types/node": "^16.6.1",
     "typescript": "^4.3.5"
   },
-  "engines": {"node": "16.6.2"}
+  "engines": {
+    "node": "16.6.2"
+  }
 }
