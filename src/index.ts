@@ -2,6 +2,13 @@ import { Client, Intents, Collection } from "discord.js";
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 
+const fs = require("fs");
+const path = require("path");
+
+const interactions = new Collection();
+const dirPath = path.resolve(__dirname, "./interactions");
+const interactionFiles = fs.readdirSync(dirPath).filter((file: any) => file.endsWith('.js'));
+
 
 export const cooldowns = new Collection();
 (async () => {
@@ -21,6 +28,15 @@ export const cooldowns = new Collection();
         { intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES]}
     );
 
+    for (const file of interactionFiles) {
+        const command = require(`./interactions/${file}`);
+        // Set a new item in the Collection
+        // With the key as the command name and the value as the exported module
+        interactions.set(command.data.name, command);
+    }
+
+
+
     client.once("ready", ()=> {
         client.user?.setActivity("with your Dollars");
         console.log(`Logged in as ${client.user?.username}! | ${client.user?.id}`);
@@ -33,6 +49,21 @@ export const cooldowns = new Collection();
         await onMessage(message, args);
     });
 
+    client.on('interactionCreate', async interaction => {
+        console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
+        if (!interaction.isCommand()) return;
+    
+        const command: any = interactions.get(interaction.commandName);
+
+        if (!command) return;
+    
+        try {
+            await command.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+    });
 
     client.login(process.env.TOKEN);
 })();
