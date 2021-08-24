@@ -50,7 +50,7 @@ export const cooldowns = new Collection();
     });
 
     client.on('interactionCreate', async interaction => {
-        console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
+        // console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
         if (!interaction.isCommand()) return;
     
         const command: any = interactions.get(interaction.commandName);
