@@ -8,7 +8,8 @@ export const link: CommandInt = {
         message.channel.send(
             //OUTDATED
             //TODO: update this
-            "https://discord.com/oauth2/authorize?client_id=826815896718540850&scope=bot&permissions=36826705"
+            // "https://discord.com/oauth2/authorize?client_id=826815896718540850&scope=bot&permissions=36826705"
+            "The link is currently outdated, check later"
         );
     }
 }
