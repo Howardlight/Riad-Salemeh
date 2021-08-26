@@ -8,3 +8,4 @@ package-lock.json
 
 src/utils/deploy-commands.ts
 src/interactions/link.ts
+src/utils/delete-commands.ts
