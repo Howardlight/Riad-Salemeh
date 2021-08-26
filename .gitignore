@@ -3,3 +3,4 @@ package-lock.json
 /prod/
 .env
 /.idea/
+src/utils/deploy-commands.ts
