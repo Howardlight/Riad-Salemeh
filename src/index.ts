@@ -1,11 +1,12 @@
-import { Client, Intents, Collection } from "discord.js";
+import { Client, Intents, Collection, Interaction } from "discord.js";
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
+import { onInteraction } from "./events/onInteraction";
 
 const fs = require("fs");
 const path = require("path");
 
-const interactions = new Collection();
+export const interactions = new Collection();
 const dirPath = path.resolve(__dirname, "./interactions");
 const interactionFiles = fs.readdirSync(dirPath).filter((file: any) => file.endsWith('.js'));
 
@@ -17,6 +18,10 @@ export const cooldowns = new Collection();
     //TODO: Add mv -i -v public dist/ && rm -v -rf src to postInstall
     // CHECK : https://medium.com/developer-rants/deploying-typescript-node-js-applications-to-heroku-81dd75424ce0
     //TODO: Remove Build or postinstall, since heroku ends up building the bot TWICE
+    //TODO: ADD NEW INV LINK
+    //TODO: ADD CLAUSE FOR WHEN THE BOT DOES NOT HAVE APPLICATIONS PERMISSIONS
+
+
 
     // Validates Env variables
     // if assertion fails, stops the bot
@@ -49,20 +54,10 @@ export const cooldowns = new Collection();
         await onMessage(message, args);
     });
 
-    client.on('interactionCreate', async interaction => {
-        // console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
-        if (!interaction.isCommand()) return;
-    
-        const command: any = interactions.get(interaction.commandName);
+    client.on('interactionCreate', async (interaction: Interaction) => {
 
-        if (!command) return;
-    
-        try {
-            await command.execute(interaction);
-        } catch (error) {
-            console.error(error);
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-        }
+        // TODO: Implement args
+        await onInteraction(interaction);
     });
 
     client.login(process.env.TOKEN);
