@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
     "start": "node -r dotenv/config ./prod/index.js",
     "postinstall": "tsc",
     "deployCommands": "node -r dotenv/config ./prod/utils/deploy-commands.js"
