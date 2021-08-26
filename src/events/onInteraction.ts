@@ -1,6 +1,6 @@
 import { Interaction } from "discord.js";
 import { interactions } from "..";
-import { deleteCommands } from "../utils/delete-commands";
+// import { deleteCommands } from "../utils/delete-commands";
 
 export const onInteraction = async (interaction: Interaction) => {
 
@@ -10,6 +10,7 @@ export const onInteraction = async (interaction: Interaction) => {
 
     const command: any = interactions.get(interaction.commandName);
 
+    // Remove this if you're trying to remove commands!
     if (!command) return;
 
     try {
