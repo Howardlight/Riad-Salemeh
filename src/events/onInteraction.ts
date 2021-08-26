@@ -1,5 +1,6 @@
-import { CommandInteraction, Interaction } from "discord.js";
+import { Interaction } from "discord.js";
 import { interactions } from "..";
+import { deleteCommands } from "../utils/delete-commands";
 
 export const onInteraction = async (interaction: Interaction) => {
 
@@ -12,7 +13,11 @@ export const onInteraction = async (interaction: Interaction) => {
     if (!command) return;
 
     try {
+        // executes commands    
         await command.execute(interaction);
+
+        // ONLY UNCOMMENT WHEN TRYING TO DELETE COMMANDS
+        // await deleteCommands(interaction);
     } catch (error) {
         console.error(error);
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
