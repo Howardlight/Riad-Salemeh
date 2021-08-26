@@ -1,6 +1,10 @@
 /node_modules/
 package-lock.json
+/.idea/
+
 /prod/
 .env
-/.idea/
+
+
 src/utils/deploy-commands.ts
+src/interactions/link.ts
