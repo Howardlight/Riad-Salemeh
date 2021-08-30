@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config ./prod/index.js",
-    "postinstall": "tsc && mv -i -v public prod/ && rm -v -rf src",
+    "postinstall": "tsc && rm -v -rf src",
     "deployCommands": "node -r dotenv/config ./prod/utils/deploy-commands.js"
   },
   "keywords": [],
