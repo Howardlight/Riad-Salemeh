@@ -14,21 +14,11 @@ const interactionFiles = fs.readdirSync(dirPath).filter((file: any) => file.ends
 export const cooldowns = new Collection();
 (async () => {
 
-
-    //TODO: Add mv -i -v public dist/ && rm -v -rf src to postInstall
-    // CHECK : https://medium.com/developer-rants/deploying-typescript-node-js-applications-to-heroku-81dd75424ce0
-    //TODO: Remove Build or postinstall, since heroku ends up building the bot TWICE
-    //TODO: ADD NEW INV LINK
-    //TODO: ADD CLAUSE FOR WHEN THE BOT DOES NOT HAVE APPLICATIONS PERMISSIONS
-
-
-
     // Validates Env variables
     // if assertion fails, stops the bot
     if(!validateEnv) return;
 
     const PREFIX = process.env.PREFIX as string;
-
     const client = new Client(
         { intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES]}
     );
