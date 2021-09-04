@@ -38,7 +38,7 @@ export const cooldowns = new Collection();
     });
 
     client.on("messageCreate", async (message) => {
-        
+        if(!message.content.startsWith(PREFIX)) return ;
         // creates the Argument List, then passes it with the message to Event Handler 
         var args: string[] = message.content.slice(PREFIX.length).trim().split(/ +/);
         await onMessage(message, args);
