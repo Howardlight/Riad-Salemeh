@@ -1,7 +1,7 @@
 # Riad-Salemeh-TS
 Riad Salemeh TS is a Discord Bot built using Typescript
 
-It allows to monitor the LBP to USD rate by Webscraping
+It allows users to monitor the LBP to USD rate by Webscraping
 
 The Website used as a source is www.lbprate.com
 
