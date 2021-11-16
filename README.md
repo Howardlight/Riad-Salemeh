@@ -8,13 +8,9 @@ The Website used as a source is www.lbprate.com
 ## Compiling
 To run the bot you must first compile the Typescript version to Javascript
 
-First install required dependencies by running
+First install the required dependencies then run the command tsc:
 ```bash
 npm install
-```
-
-then run 
-```bash
 tsc
 ```
 
@@ -31,7 +27,7 @@ TOKEN="YOURBOTTOKEN"
 PREFIX="YOURPREFIX"
 CLIENTID="YOURCLIENTID"
 ```
-once you created your .ENV file run the command
+Once you created your .ENV file run the command
 ```bash
 npm run start
 ```
