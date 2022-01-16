@@ -5,6 +5,4 @@
 .env
 
 
-src/utils/deploy-commands.ts
 src/interactions/list.ts
-src/utils/delete-commands.ts
