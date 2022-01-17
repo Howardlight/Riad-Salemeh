@@ -2,6 +2,7 @@ import { Client, Intents, Collection, Interaction } from "discord.js";
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 import { onInteraction } from "./events/onInteraction";
+import { getWebsiteData } from "./getRate";
 
 const fs = require("fs");
 const path = require("path");
@@ -11,6 +12,8 @@ const dirPath = path.resolve(__dirname, "./interactions");
 const interactionFiles = fs.readdirSync(dirPath).filter((file: any) => file.endsWith('.js'));
 
 
+// PlaceHolder values for when the bot is first instantiated
+export var rateData:string[] = ["NULL", "NULL", "NULL", "NULL"];
 export const cooldowns = new Collection();
 (async () => {
 
@@ -31,7 +34,7 @@ export const cooldowns = new Collection();
     }
 
 
-
+    // EVENT LISTENERS
     client.once("ready", ()=> {
         client.user?.setActivity("with your Dollars");
         console.log(`Logged in as ${client.user?.username}! | ${client.user?.id}`);
@@ -49,6 +52,33 @@ export const cooldowns = new Collection();
         // TODO: Implement args
         await onInteraction(interaction);
     });
+
+
+    // LEBANESE RATE SUBSEQUENCE
+    (async function loop() {
+        setTimeout(function () {
+            getWebsiteData()
+            .then(data => {
+
+                // TODO: current time as it is appears to be correct,
+                // clean up this code,
+                // then go to lbprate.ts and make the time readable
+
+                // check if hours, in both cases add
+                var updatedTime = 0; 
+                if(data[0].includes("hours")) updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 60 * 1000 ;
+                else updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 1000 ; // assume it's minutes and process              
+                
+                data[0] = updatedTime.toString();
+                rateData = data;
+                // console.log(rateData);
+                }
+            )
+            // TODO: add timestamp for when request is made, add said request to RateData
+
+            loop()
+        }, 8000); // interval of the sequence // TODO: change this to 5 mins
+    }());
 
     client.login(process.env.TOKEN);
 })();
