@@ -65,11 +65,11 @@ export const cooldowns = new Collection();
                 // then go to lbprate.ts and make the time readable
 
                 // check if hours, in both cases add
-                var updatedTime = 0; 
-                if(data[0].includes("hours")) updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 60 * 1000 ;
-                else updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 1000 ; // assume it's minutes and process              
+                // var updatedTime = 0; 
+                // if(data[0].includes("hours")) updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 60 * 1000 ;
+                // else updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 1000 ; // assume it's minutes and process              
                 
-                data[0] = updatedTime.toString();
+                // data[0] = updatedTime.toString();
                 rateData = data;
                 // console.log(rateData);
                 }
@@ -77,7 +77,7 @@ export const cooldowns = new Collection();
             // TODO: add timestamp for when request is made, add said request to RateData
 
             loop()
-        }, 8000); // interval of the sequence // TODO: change this to 5 mins
+        }, 300000); // interval of the sequence // TODO: change this to 5 mins
     }());
 
     client.login(process.env.TOKEN);
