@@ -55,29 +55,20 @@ export const cooldowns = new Collection();
 
 
     // LEBANESE RATE SUBSEQUENCE
+    const creatorId = client.users.cache.get("689419768666521631");
     (async function loop() {
         setTimeout(function () {
             getWebsiteData()
-            .then(data => {
-
-                // TODO: current time as it is appears to be correct,
-                // clean up this code,
-                // then go to lbprate.ts and make the time readable
-
-                // check if hours, in both cases add
-                // var updatedTime = 0; 
-                // if(data[0].includes("hours")) updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 60 * 1000 ;
-                // else updatedTime = parseInt(data[0].replace(/[^0-9]/g,'')) * 60 * 1000 ; // assume it's minutes and process              
-                
-                // data[0] = updatedTime.toString();
-                rateData = data;
-                // console.log(rateData);
-                }
-            )
-            // TODO: add timestamp for when request is made, add said request to RateData
+            .then(data => rateData = data)
+            .catch(async (error) => {
+                console.log(error);
+                await creatorId!.send( Date.now()+ " | an error occured: ");
+                await creatorId!.send(error);
+            })
+            
 
             loop()
-        }, 300000); // interval of the sequence // TODO: change this to 5 mins
+        }, 300000);
     }());
 
     client.login(process.env.TOKEN);
