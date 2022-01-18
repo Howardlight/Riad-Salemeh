@@ -9,7 +9,7 @@ const path = require("path");
 
 export const interactions = new Collection();
 const dirPath = path.resolve(__dirname, "./interactions");
-const interactionFiles = fs.readdirSync(dirPath).filter((file: any) => file.endsWith('.js'));
+const interactionFiles = fs.readdirSync(dirPath).filter((file: String) => file.endsWith('.js'));
 
 
 // PlaceHolder values for when the bot is first instantiated
