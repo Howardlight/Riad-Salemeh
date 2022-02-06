@@ -9,12 +9,18 @@ export const list: CommandInt = {
         const { author, channel } = message;
         if( author.id === "689419768666521631") {
             let list: String[] = [];
+            let output: String = "";
+            let count = 0;
 
             message.client.guilds.cache.forEach(guild => {
                 list.push(`${guild.name} | ${guild.id}`);
+                count += 1;
             })
+            
+            output += count.toString();
 
-            channel.send(list.join("\n").toString());
+            await channel.send("Number of Servers: **" + output + "**");
+            await channel.send(list.join("\n").toString());
         } else return ;
     }
 }
