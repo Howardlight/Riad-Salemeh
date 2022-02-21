@@ -13,9 +13,9 @@ const getAPIData = async (date: Date) => {
     let API = URL.concat(version);
 
     // Logs
-    // console.log("URL: ", URL);
-    // console.log("version: ", version);
-    // console.log("API: ", API);
+    console.log("URL: ", URL);
+    console.log("version: ", version);
+    console.log("API: ", API);
 
 
     const res: Response = await fetch(API);
@@ -91,7 +91,7 @@ export const lirarate: CommandInt = {
 
         const nowDate: Date = getEESTTime(2);
         const rates = await getAPIData(nowDate);
-        if(!("buy" in rates || "sell" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
+        if(!("buy" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
         // if(rates === {}) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
         else {
 
