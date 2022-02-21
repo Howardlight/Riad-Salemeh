@@ -54,7 +54,7 @@ function timeDiffCalc(futureDate: Date, nowDate: Date) {
     difference += hours === 0 
     ? `` 
     : hours === 1 
-    ? `1 hour,`
+    ? `1 hour, `
     : `${hours} hours,`;
 
     difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
@@ -62,15 +62,37 @@ function timeDiffCalc(futureDate: Date, nowDate: Date) {
     return difference;
 }
 
+// Eastern european standard time
+// (GMT + 2) beirut
+function getEESTTime(offset: number) {
+    // create Date object for current location
+    var d: Date = new Date();
+
+    // convert to msec
+    // subtract local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+    // create new Date object for different city
+    // using supplied offset
+    var nd = new Date(utc + (3600000*offset));
+
+    return nd;
+
+    // return time as a string
+    // return "The local time for city"+ city +" is "+ nd.toLocaleString();
+}
+
 
 export const lirarate: CommandInt = {
     name: "lirarate",
     description: "use Fetch and Cheerio to get the LBP rate",
     run: async (message: Message) => {
-        
-        const nowDate: Date = new Date(Date.now());
+
+        const nowDate: Date = getEESTTime(2);
         const rates = await getAPIData(nowDate);
-        if(!("buy" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
+        if(!("buy" in rates || "sell" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
+        // if(rates === {}) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
         else {
 
             // get values
