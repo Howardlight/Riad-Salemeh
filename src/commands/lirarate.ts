@@ -2,6 +2,9 @@
 const fetch = require("../../node_modules/node-fetch");
 import { Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
+import {
+    getLirarateAPIData,
+} from "../utils/utils";
 
 // Get Date from API
 const getAPIData = async (date: Date) => {
