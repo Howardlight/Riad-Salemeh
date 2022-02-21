@@ -19,13 +19,14 @@ const getAPIData = async (date: Date) => {
 
 
     const res: Response = await fetch(API);
+    console.log(res);
     if(!res.ok) {
         console.error("RESPONSE ERROR");
         return {};
     }
     else {
         const data = await res.json();
-        // console.log(data);
+        console.log(data);
         return data;
     };
 
