@@ -99,7 +99,7 @@ export const lirarate: CommandInt = {
     run: async (message: Message) => {
 
         const nowDate: Date = getEESTTime(2);
-        const rates = await getAPIData(nowDate);
+        const rates = await getLirarateAPIData(nowDate);
         if(!("buy" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
         else {
 
