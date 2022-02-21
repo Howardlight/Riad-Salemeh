@@ -13,9 +13,9 @@ const getAPIData = async (date: Date) => {
     let API = URL.concat(version);
 
     // Logs
-    console.log("URL: ", URL);
-    console.log("version: ", version);
-    console.log("API: ", API);
+    // console.log("URL: ", URL);
+    // console.log("version: ", version);
+    // console.log("API: ", API);
 
 
     const res: Response = await fetch(API,{
@@ -27,9 +27,9 @@ const getAPIData = async (date: Date) => {
             "Content-Type": "application/json"
         }
     });
-    console.log(res);
     if(!res.ok) {
-        console.error("RESPONSE ERROR");
+        if(res.status === 404) console.error("404 RESPONSE ERROR at lirarate | getAPIData");
+        else if (res.status === 401) console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");
         return {};
     }
     else {
@@ -87,9 +87,6 @@ function getEESTTime(offset: number) {
     var nd = new Date(utc + (3600000*offset));
 
     return nd;
-
-    // return time as a string
-    // return "The local time for city"+ city +" is "+ nd.toLocaleString();
 }
 
 
@@ -101,7 +98,6 @@ export const lirarate: CommandInt = {
         const nowDate: Date = getEESTTime(2);
         const rates = await getAPIData(nowDate);
         if(!("buy" in rates)) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
-        // if(rates === {}) console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`);
         else {
 
             // get values
