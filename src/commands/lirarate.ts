@@ -18,7 +18,15 @@ const getAPIData = async (date: Date) => {
     console.log("API: ", API);
 
 
-    const res: Response = await fetch(API);
+    const res: Response = await fetch(API,{
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
     console.log(res);
     if(!res.ok) {
         console.error("RESPONSE ERROR");
