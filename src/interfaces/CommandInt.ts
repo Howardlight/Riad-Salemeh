@@ -33,4 +33,10 @@ export interface CommandIntOptionalArgs extends BaseCommandInt {
     run: (message: Message, args?: string[]) => Promise<void>;
 }
 
+export interface liraResponse {
+    buy: Array<number[]>;
+    sell: Array<number[]>;
+}
+
+
 export type CommandInt = CommandIntNoArgs | CommandIntArgs | CommandIntOptionalArgs;
