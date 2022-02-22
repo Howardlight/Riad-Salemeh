@@ -5,8 +5,8 @@ import { CommandInt } from "../interfaces/CommandInt";
 import {
     timeDiffCalc,
     getEESTTime,
+    quirkline
 } from "../utils/utils";
-import { quirkline } from "../quirkLine";
 import { liraData } from "..";
 
 export const lirarate: CommandInt = {

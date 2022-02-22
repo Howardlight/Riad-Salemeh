@@ -1,7 +1,9 @@
 import { Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
 import { rateData } from "..";
-import { quirkline } from "../quirkLine";
+import {
+    quirkline
+} from "../utils/utils";
 
 
 export const lbprate: CommandInt = {
