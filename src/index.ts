@@ -6,8 +6,6 @@ import { getWebsiteData } from "./getRate";
 import { getLirarateAPIData, getEESTTime } from "./utils/utils";
 import { liraResponse } from "./interfaces/CommandInt";
 
-const NodeCache = require( "node-cache" );
-
 const fs = require("fs");
 const path = require("path");
 
