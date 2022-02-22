@@ -26,7 +26,10 @@ export async function getLirarateAPIData(date: Date)  {
     if(!res.ok) {
         if(res.status === 404) console.error("404 RESPONSE ERROR at lirarate | getAPIData");
         else if (res.status === 401) console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");
-        return {};
+        return {
+            buy: [],
+            sell: [],
+        };
     }
     else {
         const data = await res.json();
@@ -91,4 +94,5 @@ export const quirkline = [
     "Ana ma 5assni, bss llira lyom:",
     "Bisallem 3lek Michel Aoun:",
     "Discount 51%, bss la 2elak:",
+    "100% safer than botler!",
 ];
