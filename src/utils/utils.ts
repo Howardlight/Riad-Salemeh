@@ -59,7 +59,7 @@ export function timeDiffCalc(futureDate: Date, nowDate: Date) {
     ? `` 
     : hours === 1 
     ? `1 hour, `
-    : `${hours} hours,`;
+    : `${hours} hours, `;
 
     difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
 
