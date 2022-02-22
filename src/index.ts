@@ -86,7 +86,7 @@ export const cooldowns = new Collection();
             
 
             loop()
-        }, 10000);
+        }, 300000);
     }());
 
     client.login(process.env.TOKEN);
