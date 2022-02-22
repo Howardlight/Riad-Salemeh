@@ -3,6 +3,10 @@ import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 import { onInteraction } from "./events/onInteraction";
 import { getWebsiteData } from "./getRate";
+import { getLirarateAPIData, getEESTTime } from "./utils/utils";
+import { liraResponse } from "./interfaces/CommandInt";
+
+const NodeCache = require( "node-cache" );
 
 const fs = require("fs");
 const path = require("path");
@@ -14,6 +18,11 @@ const interactionFiles = fs.readdirSync(dirPath).filter((file: String) => file.e
 
 // PlaceHolder values for when the bot is first instantiated
 export var rateData:string[] = ["NULL", "NULL", "NULL", "NULL"];
+export var liraData: liraResponse = {
+    buy: [],
+    sell: [],
+};
+
 export const cooldowns = new Collection();
 (async () => {
 
@@ -64,11 +73,20 @@ export const cooldowns = new Collection();
                 console.log(error);
                 await creatorId!.send( Date.now()+ " | an error occured: ");
                 await creatorId!.send(error);
-            })
+            });
+            
+            const nowDate = getEESTTime(2);
+            getLirarateAPIData(nowDate)
+            .then(data => liraData = data)
+            .catch(async (error) => {
+                console.log(error);
+                await creatorId!.send( Date.now()+ " | an error occured: ");
+                await creatorId!.send(error);
+            });
             
 
             loop()
-        }, 300000);
+        }, 10000);
     }());
 
     client.login(process.env.TOKEN);
