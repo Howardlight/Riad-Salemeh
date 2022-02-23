@@ -24,12 +24,8 @@ export async function getLirarateAPIData(date: Date)  {
         }
     });
     if(!res.ok) {
-        if(res.status === 404) console.error("404 RESPONSE ERROR at lirarate | getAPIData");
-        else if (res.status === 401) console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");
-        return {
-            buy: [],
-            sell: [],
-        };
+        if(res.status === 404) throw console.error("404 RESPONSE ERROR at lirarate | getAPIData");
+        else if (res.status === 401) throw console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");        
     }
     else {
         const data = await res.json();
