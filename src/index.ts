@@ -63,29 +63,28 @@ export const cooldowns = new Collection();
 
     // LEBANESE RATE SUBSEQUENCE
     const creatorId = client.users.cache.get("689419768666521631");
-    (async function loop() {
+    (await async function loop() {
         setTimeout(function () {
             getWebsiteData()
-            .then(data => rateData = data)
-            .catch(async (error) => {
-                console.log(error);
-                await creatorId!.send( Date.now()+ " | an error occured: ");
-                await creatorId!.send(error);
-            });
-            
+                .then(data => rateData = data)
+                .catch(async (error) => {
+                    console.log(error);
+                    await creatorId!.send(Date.now() + " | an error occured: ");
+                    await creatorId!.send(error);
+                });
+
             const nowDate = getEESTTime(2);
             getLirarateAPIData(nowDate)
-            .then(data => liraData = data)
-            .catch(async (error) => {
-                console.log(error);
-                await creatorId!.send( Date.now()+ " | an error occured: ");
-                await creatorId!.send(error);
-            });
-            
+                .then(data => liraData = data)
+                .catch(async (error) => {
+                    console.log(error);
+                    await creatorId!.send(Date.now() + " | an error occured: ");
+                    await creatorId!.send(error);
+                });
 
             loop()
         }, 300000);
     }());
 
-    client.login(process.env.TOKEN);
+    await client.login(process.env.TOKEN);
 })();
