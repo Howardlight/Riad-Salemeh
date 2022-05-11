@@ -1,5 +1,4 @@
 // const Cheerio = require("../../node_modules/cheerio");
-const fetch = require("../../node_modules/node-fetch");
 import { Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
 import {
