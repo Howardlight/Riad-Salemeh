@@ -1,6 +1,5 @@
 import { Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
-import { rateData } from "..";
 
 export const convert: CommandInt = {
     name: "convert",

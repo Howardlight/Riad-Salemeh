@@ -1,9 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
-import { rateData } from "..";
-import {
-    quirkline
-} from "../utils/utils";
+import { quirkline } from "../utils/utils";
 
 module.exports = {
     data: new SlashCommandBuilder()
