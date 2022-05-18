@@ -1,24 +1,26 @@
-// const Cheerio = require("../../node_modules/cheerio");
-import { Message } from "discord.js";
-import { CommandInt } from "../interfaces/CommandInt";
-import {
-    timeDiffCalc,
-    getEESTTime,
-    quirkline
-} from "../utils/utils";
+import { SlashCommandBuilder } from "@discordjs/builders";
+const { CommandInteraction, Message } = require("@discordjs/builders");
+
+// import { CommandInt } from "../interfaces/CommandInt";
+// import {
+//     timeDiffCalc,
+//     getEESTTime,
+//     quirkline
+// } from "../utils/utils";
 // import { liraData } from "..";
 
-export const lirarate: CommandInt = {
-    name: "lirarate",
-    description: "Returns LBP rate from Lirarate.com",
-    run: async (message: Message) => {
 
+module.exports = {
+    data: new SlashCommandBuilder()
+            .setName("lirarate")
+            .setDescription("Returns LBP rate from Lirarate.com"),
+    async execute(interaction: typeof CommandInteraction) {
         // const nowDate: Date = getEESTTime(2);
         // const rates = liraData;
 
         // if (rates.buy.length === 0) {
         //     console.error(`Lirarate | getAPIData | rates | VALUE IS NULL`, rates);
-        //     await message.channel.send("This command is currently unavailable.");
+        //     await interaction.reply("This command is currently unavailable.");
         // } else {
 
         //     try {
@@ -41,11 +43,11 @@ export const lirarate: CommandInt = {
         //         // create the response, the extended response, concat then return
         //         const response = `${quirkline[Math.floor(Math.random() * quirkline.length)]}`;
         //         const extendedResponse = (`\nThe BUY rate is 1 USD at ${buyRate[0][1]} LBP\nThe SELL rate is 1 USD at ${sellRate[0][1]} LBP\n Updated ${timeDiff} ago`);
-        //         await message.channel.send(response.concat(extendedResponse));
+        //         await interaction.reply(response.concat(extendedResponse));
         //     } catch(err) {
         //         console.error(`lirarate try/catch statement error | rates: `, rates);
-        //         await message.channel.send("This command is currently unavailable.");
-        //     }
+        //         await interaction.reply("This command is currently unavailable.");
+            // }
         // }
     }
-}
+};
