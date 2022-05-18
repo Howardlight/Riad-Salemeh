@@ -24,6 +24,6 @@ module.exports = {
         else segments.push("Less than a minute");
         
         const dateString = segments.join(', ');
-        await interaction.reply(dateString.toString());
+        await interaction.reply(`${dateString.toString()}.`);
     },
 };

@@ -7,7 +7,6 @@ export const getUptime: CommandInt = {
     run: async (message: Message) => {
         
         var uptime = process.uptime();
-        // console.log("Uptime raw:", uptime)
         const date = new Date(uptime*1000);
         const days = date.getUTCDate() - 1,
               hours = date.getUTCHours(),
@@ -23,6 +22,6 @@ export const getUptime: CommandInt = {
         
 
         const dateString = segments.join(', ');
-        message.channel.send(dateString.toString());
+        message.channel.send(`${dateString.toString()}.`);
     }
 }
