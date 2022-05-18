@@ -19,6 +19,6 @@ export const convert: CommandInt = {
             return ;
         }
 
-        else await message.channel.send(`**${args[1]}** $ equals **${ Number(args[1]) * Number(rateData[1].slice(1, ).replace(/\D/g, ""))}** LL.\nRate used: **${rateData[1].slice(1, ).replace(/\D/g, "")}** LL`);
+        else await message.channel.send(`**${args[1]}** $ equals **${ Number(args[1]) * Number(rateData[1].slice(1, ).replace(/\D/g, ""))}** LL.\nRate used: **${rateData[1].slice(1, ).replace(/\D/g, "")}** LL.`);
     }
 }
