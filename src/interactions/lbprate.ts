@@ -1,12 +1,12 @@
+const { CommandInteraction } = require("@discordjs/builders");
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
 import { quirkline } from "../utils/utils";
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('lbprate')
         .setDescription("use Fetch and Cheerio to get the LBP rate"),
-    async execute(interaction: CommandInteraction) {
+    async execute(interaction: typeof CommandInteraction) {
 
 
         if(rateData[1] === "NULL") {

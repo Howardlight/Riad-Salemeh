@@ -1,11 +1,11 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { CommandInteraction } = require("@discordjs/builders");
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('uptime')
 		.setDescription('Returns uptime of the bot'),
-	async execute(interaction: CommandInteraction) {
+	async execute(interaction: typeof CommandInteraction) {
 
 
         var uptime = process.uptime();

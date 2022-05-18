@@ -1,4 +1,4 @@
-import { Client, Intents, Collection, Interaction } from "discord.js";
+import { Client, Intents, Collection, Interaction, Message } from "discord.js";
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 import { onInteraction } from "./events/onInteraction";
@@ -37,7 +37,7 @@ export const cooldowns = new Collection();
         console.log(`Logged in as ${client.user?.username}! | ${client.user?.id}`);
     });
 
-    client.on("messageCreate", async (message) => {
+    client.on("messageCreate", async (message: Message) => {
         if(!message.content.startsWith(PREFIX)) return ;
         // creates the Argument List, then passes it with the message to Event Handler 
         var args: string[] = message.content.slice(PREFIX.length).trim().split(/ +/);
