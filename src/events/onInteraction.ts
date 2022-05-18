@@ -1,8 +1,8 @@
-import { Interaction } from "discord.js";
+const { CommandInteraction } = require("@discordjs/builders");
 import { interactions } from "..";
 // import { deleteCommands } from "../utils/delete-commands";
 
-export const onInteraction = async (interaction: Interaction) => {
+export const onInteraction = async (interaction: typeof CommandInteraction) => {
 
 
     // console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
@@ -21,6 +21,6 @@ export const onInteraction = async (interaction: Interaction) => {
         // await deleteCommands(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        await interaction.reply({ content: 'There was an error while executing this command.', ephemeral: true });
     }
 }
