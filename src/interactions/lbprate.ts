@@ -13,7 +13,7 @@ module.exports = {
 
 
         if(rateData[1] === "NULL") {
-            await interaction.reply("This Command is currently unavailable.");
+            await interaction.reply("This command is currently unavailable.");
             return ;
         }
         // create the response, the extended response, concat then return
