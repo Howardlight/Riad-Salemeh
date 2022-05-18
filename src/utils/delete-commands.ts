@@ -1,6 +1,6 @@
-import { Interaction } from "discord.js";
+const { CommandInteraction } = require("@discordjs/builders");
 
-export const deleteCommands = async (interaction: Interaction) => {
+export const deleteCommands = async (interaction: typeof CommandInteraction) => {
 
     if (!interaction.isCommand()) return;
 
@@ -9,9 +9,9 @@ export const deleteCommands = async (interaction: Interaction) => {
 
 
     // GLOBAL
-    // clients.api.applications(clients.user.id).commands(interaction.commandId).delete();
+    clients.api.applications(clients.user.id).commands(interaction.commandId).delete();
 
     // GUILD BASED
-    clients.api.applications(clients.user.id).guilds(process.env.GUILDID).commands(interaction.commandId).delete();
+    // clients.api.applications(clients.user.id).guilds(process.env.GUILDID).commands(interaction.commandId).delete();
     console.log(`successfully deleted ${interaction.commandName} of ID ${interaction.commandId}`);
 }
