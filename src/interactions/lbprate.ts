@@ -5,7 +5,7 @@ import { quirkline } from "../utils/utils";
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('lbprate')
-        .setDescription("use Fetch and Cheerio to get the LBP rate"),
+        .setDescription("Get current black market Lira rate"),
     async execute(interaction: typeof CommandInteraction) {
 
 
