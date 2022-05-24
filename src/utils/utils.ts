@@ -92,3 +92,14 @@ export const quirkline = [
     "Discount 51%, bss la 2elak:",
     "100% safer than botler!",
 ];
+
+/**
+ *  Takes number and returns it with a comma every 3 digits
+ * 
+ *  Ex: 1234567 (number) ==> 1,234,567 (string)
+ * @param x 
+ * @returns string
+ */
+export function numberWithCommas(x: number) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
