@@ -1,6 +1,7 @@
 import { SlashCommandIntegerOption } from "@discordjs/builders";
 import {SlashCommandBuilder} from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
+import { numberWithCommas } from "../utils/utils";
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -16,7 +17,7 @@ module.exports = {
 		try {
 
 			const inputValue = interaction.options.getInteger("value");
-			await interaction.reply(`**${inputValue}** $ equals **${Number(inputValue) * Number(rateData[1].slice(1,).replace(/\D/g, ""))}** LL.\nRate used: **${rateData[1].slice(1,).replace(/\D/g, "")}** LL.`);
+			await interaction.reply(`**${inputValue}** $ equals **${numberWithCommas(Number(inputValue) * Number(rateData[1].slice(1,).replace(/\D/g, "")))}** LL.\nRate used: **${numberWithCommas(Number(rateData[1].slice(1,).replace(/\D/g, "")))}** LL.`);
 
 		} catch(error) {
 			

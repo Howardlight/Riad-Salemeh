@@ -1,5 +1,6 @@
 import { Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
+import { numberWithCommas } from "../utils/utils";
 
 export const convert: CommandInt = {
     name: "convert",
@@ -18,6 +19,6 @@ export const convert: CommandInt = {
             return ;
         }
 
-        else await message.channel.send(`**${args[1]}** $ equals **${ Number(args[1]) * Number(rateData[1].slice(1, ).replace(/\D/g, ""))}** LL.\nRate used: **${rateData[1].slice(1, ).replace(/\D/g, "")}** LL.`);
+        await message.channel.send(`**${numberWithCommas(Number(args[1]))}** $ equals **${ numberWithCommas(Number(args[1]) * Number(rateData[1].slice(1, ).replace(/\D/g, ""))) }** LL.\nRate used: **${numberWithCommas(Number(rateData[1].slice(1, ).replace(/\D/g, "")))}** LL.`);
     }
 }
