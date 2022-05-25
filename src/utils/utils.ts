@@ -84,7 +84,7 @@ export function timeDiffCalc(futureDate: Date, nowDate: Date) {
 };
 
 // Eastern european standard time
-// (GMT + 2) beirut
+// (GMT + 3) beirut
 export function getEESTTime(offset: number) {
     // create Date object for current location
     var d: Date = new Date();
