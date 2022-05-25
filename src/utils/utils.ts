@@ -37,7 +37,7 @@ export async function getLirarateAPIData(date: Date)  {
 
 /**
  * //TODO: Finish this
- * @returns data: FuelResponse[]
+ * @returns data: FuelResponse[] | undefined
  */
 async function getFuelData() {
 
@@ -46,10 +46,16 @@ async function getFuelData() {
     // console.log(`getEESTTime: ${getEESTTime(3)}`);
     let URL: string = `https://lirarate.org/wp-json/lirarate/v2/fuel?currency=LBP&_ver=t${formatTimeForLirarate(getEESTTime(3))}`;
 
-    const res: Response = await fetch(URL);
-    const data: FuelResponse[] = await res.json();
+    try{
+        const res: Response = await fetch(URL);
+        const data: FuelResponse[] = await res.json();
 
-    return data;
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log(error);
+        return undefined;
+    }
 }
 
 
@@ -60,6 +66,8 @@ async function getFuelData() {
 export async function getLatestFuel() {
     const data = await getFuelData();
 
+
+    if(data == undefined) return undefined;
     //NOTE: RETURNS DATA WITHOUT DATE OF EACH ONE
 
     const fuel = [];
