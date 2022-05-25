@@ -34,6 +34,24 @@ export async function getLirarateAPIData(date: Date)  {
     };
 };
 
+
+/**
+ * //TODO: Finish this
+ * @returns data: FuelResponse[]
+ */
+async function getFuelData() {
+
+    //TODO: Make this Safe, incase there is no response
+    
+    // console.log(`getEESTTime: ${getEESTTime(3)}`);
+    let URL: string = `https://lirarate.org/wp-json/lirarate/v2/fuel?currency=LBP&_ver=t${formatTimeForLirarate(getEESTTime(3))}`;
+
+    const res: Response = await fetch(URL);
+    const data: FuelResponse[] = await res.json();
+
+    return data;
+}
+
 export function timeDiffCalc(futureDate: Date, nowDate: Date) {
     let diffInMilliSeconds = Math.abs(futureDate.getTime() - nowDate.getTime()) / 1000;
 
