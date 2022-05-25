@@ -101,6 +101,23 @@ export function getEESTTime(offset: number) {
     return nd;
 };
 
+
+/**
+ * TODO: finish this
+ * @param time 
+ * @returns string
+ */
+function formatTimeForLirarate(time: Date) {
+
+    //TODO: optimize this
+    const year = time.getFullYear();
+    const month = time.getMonth();
+    const day = time.getDate();
+    const hour = time.getHours();
+
+    return (`${year}${month+1}${day}${hour}`).toString();
+}
+
 export const quirkline = [
     "El lira b2alf 5er tfarrage:",
     "I did some handaset, and the new Lira value is:",
