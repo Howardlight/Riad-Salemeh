@@ -6,7 +6,6 @@ import {quirkline} from "../utils/utils";
 export const lbprate: CommandInt = {
     name: "lbprate",
     description: "Get current black market Lira rate",
-    cooldown: 30,
     run: async (message: Message) => {
 
         if (rateData[0] === "NULL") {
