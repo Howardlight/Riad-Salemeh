@@ -52,6 +52,27 @@ async function getFuelData() {
     return data;
 }
 
+
+/**
+ * //TODO: finish this
+ * @returns [OCTANE95, OCTANE98, DIESEL, GAS, OIL] 
+ */
+export async function getLatestFuel() {
+    const data = await getFuelData();
+
+    //NOTE: RETURNS DATA WITHOUT DATE OF EACH ONE
+
+    const fuel = [];
+    fuel.push(data[0]["data"].pop()![1]); // OCTANE 95
+    fuel.push(data[1]["data"].pop()![1]); // OCTANE 98
+    fuel.push(data[2]["data"].pop()![1]); // DIESEL
+    fuel.push(data[3]["data"].pop()![1]); // GAS
+    fuel.push(data[4]["data"].pop()![1]); //BRENT CRUDE OIL (USD)
+
+    // console.log(fuel);
+    return fuel;
+}
+
 export function timeDiffCalc(futureDate: Date, nowDate: Date) {
     let diffInMilliSeconds = Math.abs(futureDate.getTime() - nowDate.getTime()) / 1000;
 
