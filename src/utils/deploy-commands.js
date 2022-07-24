@@ -3,15 +3,18 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const path = require("path");
 const fs = require("fs");
+const {Snowflake} = require("discord.js");
 
 
 // If deploying to Global, set ID and TOKEN to Salemeh, else use BonBon
+let clientId = undefined;
+let token = undefined;
 if(process.argv[2] === "global") {
-	const clientId = process.env.RIADSALEMEHID;
-	const token = process.env.RIADSALEMEH;
+	clientId = process.env.RIADSALEMEHID;
+	token = process.env.RIADSALEMEH;
 } else {
-	const clientId = process.env.BONBONID;
-	const token = process.env.BONBON;
+	clientId = process.env.BONBONID;
+	token = process.env.BONBON;
 }
 
 const guildId = process.env.GUILDID;
