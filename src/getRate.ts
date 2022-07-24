@@ -25,9 +25,6 @@ const URL: string = "https://lbprate.com/";
 export const getWebsiteData = async () => {
     const lbpRaw = await getRawData(URL);
     const parsedData: CheerioAPI = Cheerio.load(lbpRaw);
-    let fuelRate = parsedData;
-    let sayrafaRate = parsedData;
-
 
     let marketRateList: string[] = []; // i refers to the index, e refers to the element
     parsedData(".text-white").each(function (i: number, e: Element) {
@@ -35,13 +32,13 @@ export const getWebsiteData = async () => {
     });
 
     let sayrafaRateList: string[] = [];
-    sayrafaRate = sayrafaRate(".text-white", "#sayrafaRate").each(function (i: number, e: Element) {
-        sayrafaRateList[i] = sayrafaRate(e).text();
+    parsedData(".text-white", "#sayrafaRate").each(function (i: number, e: Element) {
+        sayrafaRateList[i] = parsedData(e).text();
     });
 
     let fuelRateList: string[] = [];
-    fuelRate = fuelRate(".text-white", "#fuelRate").each(function (i: number, e: Element) {
-        fuelRateList[i] = fuelRate(e).text();
+    parsedData(".text-white", "#fuelRate").each(function (i: number, e: Element) {
+        fuelRateList[i] = parsedData(e).text();
     });
 
     //TODO: Clean this, add Docs
