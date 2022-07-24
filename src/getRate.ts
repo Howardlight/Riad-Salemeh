@@ -1,11 +1,17 @@
+// @ts-ignore
+import CheerioAPI = cheerio.CheerioAPI;
+
 const Cheerio = require("../node_modules/cheerio");
 const fetch = require("../node_modules/node-fetch");
+
+import * as cheerio from "cheerio";
 
 // use Fetch to get the website 
 const getRawData = (URL: string) => {
     return fetch(URL)
     .then((response: Response) => response.text())
     .then((data: string) => {
+        // console.log(data);
         return data;
     });
 };
@@ -15,15 +21,33 @@ const URL: string = "https://lbprate.com/";
 
 // Process the website then return List
 // of desired values
+//TODO: Add TSDocs
 export const getWebsiteData = async () => {
     const lbpRaw = await getRawData(URL);
-    const parsedData = Cheerio.load(lbpRaw);
+    const parsedData: CheerioAPI = Cheerio.load(lbpRaw);
+    let fuelRate = parsedData;
+    let sayrafaRate = parsedData;
 
-    let list: string[] = []; // i refers to the index, e refers to the element
-    parsedData(".text-white").each(function (i: any, e: Element) {
-        list[i] = parsedData(e).text();
+
+    let marketRateList: string[] = []; // i refers to the index, e refers to the element
+    parsedData(".text-white").each(function (i: number, e: Element) {
+        marketRateList[i] = parsedData(e).text();
     });
-    const out:string[] = [list[0], list[2], list[4]];
 
-    return out;
+    let sayrafaRateList: string[] = [];
+    sayrafaRate = sayrafaRate(".text-white", "#sayrafaRate").each(function (i: number, e: Element) {
+        sayrafaRateList[i] = sayrafaRate(e).text();
+    });
+
+    let fuelRateList: string[] = [];
+    fuelRate = fuelRate(".text-white", "#fuelRate").each(function (i: number, e: Element) {
+        fuelRateList[i] = fuelRate(e).text();
+    });
+
+    //TODO: Clean this, add Docs
+    marketRateList = [marketRateList[0], marketRateList[2], marketRateList[4]];
+    sayrafaRateList = [marketRateList[0], sayrafaRateList[1], sayrafaRateList[3]]
+    fuelRateList = [marketRateList[0], fuelRateList[1], fuelRateList[3], fuelRateList[5], fuelRateList[7], fuelRateList[9]]
+
+    return [marketRateList, sayrafaRateList, fuelRateList];
 };

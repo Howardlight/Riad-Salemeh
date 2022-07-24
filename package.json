@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node -r dotenv/config ./prod/index.js",
     "postinstall": "tsc && rm -v -rf src",
-    "deployCommands": "node -r dotenv/config ./src/utils/deploy-commands.js"
+    "deployCommands": "rimraf -v -rf prod && tsc && node -r dotenv/config ./src/utils/deploy-commands.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.6.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   },
   "engines": {

@@ -8,7 +8,7 @@ export const convert: CommandInt = {
     run: async (message: Message, args: string[]) => {
         
         // Check if rateData is valid
-        if(rateData[1] === "NULL") {
+        if(marketRate[1] === "NULL") {
             await message.channel.send("This command is currently unavailable.");
             return ;
         }
@@ -19,6 +19,6 @@ export const convert: CommandInt = {
             return ;
         }
 
-        await message.channel.send(`**${numberWithCommas(Number(args[1]))}** $ equals **${ numberWithCommas(Number(args[1]) * Number(rateData[1].slice(1, ).replace(/\D/g, ""))) }** LL.\nRate used: **${numberWithCommas(Number(rateData[1].slice(1, ).replace(/\D/g, "")))}** LL.`);
+        await message.channel.send(`**${numberWithCommas(Number(args[1]))}** $ equals **${ numberWithCommas(Number(args[1]) * Number(marketRate[1].slice(1, ).replace(/\D/g, ""))) }** LL.\nRate used: **${numberWithCommas(Number(marketRate[1].slice(1, ).replace(/\D/g, "")))}** LL.`);
     }
 }

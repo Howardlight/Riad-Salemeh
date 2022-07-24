@@ -21,26 +21,37 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(token);
 
 
-
+//TODO: refactor this so you can pick which clientID to pass, use npm parameters and process.argv
 (async () => {
 	try {
 		console.log('Started refreshing application (/) commands.');
+		console.log(process.argv);
 
-		await rest.put(
-			
-			// GUILD BASED COMMANDS
-			// Routes.applicationGuildCommands(clientId, guildId),
-			
-			// GLOBAL COMMANDS, ONLY USE ON DEPLOYEMENT
-			Routes.applicationCommands(clientId),
-			{ body: commands },
-		);
+		// GUILD BASED COMMANDS
+		if(process.argv[2] === "local") {
+			await rest.put(
+				Routes.applicationGuildCommands(clientId, guildId),
+					{ body: commands },
+			)
+		}
+
+		// GLOBAL COMMANDS, ONLY USE ON DEPLOYEMENT
+		else if (process.argv[2] === "global") {
+			await rest.put(
+				Routes.applicationCommands(clientId),
+				{body: commands}
+			)
+		}
+
+		else {
+			console.log("LOCAL/GLOBAL PARAMETER NOT PASSED\NCANCELLED DEPLOYMENT");
+			return ;
+		}
 
 		console.log('Successfully registered application commands.');
-	
 	} catch (error) {
 		console.error(error);
 	}
