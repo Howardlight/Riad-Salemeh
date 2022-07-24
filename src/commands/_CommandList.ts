@@ -7,6 +7,6 @@ import { help } from "./help";
 import { getUptime } from "./getUptime";
 import { convert } from "./convert";
 import { fuel } from "./fuel";
-// import { lirarate } from "./lirarate";
+import {sayrafa} from "./sayrafa";
 
-export const CommandList: CommandInt[] = [github, link, list, lbprate, help, getUptime, convert, fuel];
+export const CommandList: CommandInt[] = [github, link, list, lbprate, help, getUptime, convert, fuel, sayrafa];
