@@ -8,14 +8,12 @@ export const sayrafa: CommandInt = {
 
         try{
 
-            const sayrafa = sayrafaRate;
-
-            if(sayrafa[0] == "NULL") {
+            if(sayrafaRate[0] == "NULL") {
                 await message.channel.send("This command is currently unavailable.");
                 return ;
             }
 
-            await message.channel.send(`The SAYRAFA rate is ${sayrafa[1]}\nVolume: ${sayrafa[2]}\n${sayrafa[0]}`);
+            await message.channel.send(`The SAYRAFA rate is ${sayrafaRate[1]}\nVolume: ${sayrafaRate[2]}\n${sayrafaRate[0]}`);
 
         } catch(error) {
             console.log(error);

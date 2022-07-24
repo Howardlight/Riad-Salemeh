@@ -8,14 +8,12 @@ export const fuel: CommandInt = {
 
         try{
 
-            const fuel = fuelRate;
-
-            if(fuel[0] == "NULL") {
+            if(fuelRate[0] == "NULL") {
                 await message.channel.send("This command is currently unavailable.");
                 return ;
             }
 
-            await message.channel.send(`Octane 95: ${fuel[1]}\nOctane 98: ${fuel[2]}\nDiesel: ${fuel[3]}\nGas: ${fuel[4]}\nCrude Oil: ${fuel[5]}\n${fuel[0]}`);
+            await message.channel.send(`Octane 95: ${fuelRate[1]}\nOctane 98: ${fuelRate[2]}\nDiesel: ${fuelRate[3]}\nGas: ${fuelRate[4]}\nCrude Oil: ${fuelRate[5]}\n${fuelRate[0]}`);
 
         } catch(error) {
             console.log(error);
