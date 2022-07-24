@@ -9,13 +9,13 @@ module.exports = {
     async execute(interaction: typeof CommandInteraction) {
 
 
-        if(rateData[1] === "NULL") {
+        if(marketRate[1] === "NULL") {
             await interaction.reply("This command is currently unavailable.");
             return ;
         }
         // create the response, the extended response, concat then return
         const response = `${quirkline[Math.floor(Math.random()*quirkline.length)]}`;
-        const extendedResponse = (`\nThe BUY rate is ${rateData[1]}\nThe SELL rate is ${rateData[2]}\n${rateData[0]}`);
+        const extendedResponse = (`\nThe BUY rate is ${marketRate[1]}\nThe SELL rate is ${marketRate[2]}\n${marketRate[0]}`);
         await interaction.reply(response.concat(extendedResponse));
     },
 };

@@ -56,7 +56,12 @@ export const cooldowns = new Collection();
     (await async function loop() {
         setTimeout(function () {
             getWebsiteData()
-                .then(data => globalThis.rateData = data)
+                .then(data => {
+                    // Assign The fetched data to the Globals
+                    globalThis.marketRate = data[0];
+                    globalThis.sayrafaRate = data[1];
+                    globalThis.fuelRate = data[2];
+                })
                 .catch(async (error) => {
                     console.log(error);
                     // await creatorId!.send(Date.now() + " | an error occured: ");

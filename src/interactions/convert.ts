@@ -17,7 +17,7 @@ module.exports = {
 		try {
 
 			const inputValue = interaction.options.getInteger("value");
-			await interaction.reply(`**${inputValue}** $ equals **${numberWithCommas(Number(inputValue) * Number(rateData[1].slice(1,).replace(/\D/g, "")))}** LL.\nRate used: **${numberWithCommas(Number(rateData[1].slice(1,).replace(/\D/g, "")))}** LL.`);
+			await interaction.reply(`**${inputValue}** $ equals **${numberWithCommas(Number(inputValue) * Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.\nRate used: **${numberWithCommas(Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.`);
 
 		} catch(error) {
 			
