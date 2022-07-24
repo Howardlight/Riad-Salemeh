@@ -5,10 +5,16 @@ const path = require("path");
 const fs = require("fs");
 
 
+// If deploying to Global, set ID and TOKEN to Salemeh, else use BonBon
+if(process.argv[2] === "global") {
+	const clientId = process.env.RIADSALEMEHID;
+	const token = process.env.RIADSALEMEH;
+} else {
+	const clientId = process.env.BONBONID;
+	const token = process.env.BONBON;
+}
 
-const token = process.env.TOKEN;
 const guildId = process.env.GUILDID;
-const clientId = process.env.CLIENTID;
 const dirPath = path.resolve((__dirname + "/../../prod/" + "interactions"));
 console.log(__dirname + "/../" + "interactions");
 
