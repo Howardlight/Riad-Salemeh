@@ -1,6 +1,5 @@
 import {Message} from "discord.js";
 import {CommandInt} from "../interfaces/CommandInt";
-import { getLatestFuel } from "../utils/utils";
 
 export const fuel: CommandInt = {
     name: "fuel",
@@ -9,14 +8,14 @@ export const fuel: CommandInt = {
 
         try{
 
-            const fuel = await getLatestFuel();
+            const fuel = fuelRate;
 
-            if(fuel == undefined) {
+            if(fuel[0] == "NULL") {
                 await message.channel.send("This command is currently unavailable.");
                 return ;
             }
 
-            await message.channel.send(`Octane 95: ${fuel[0]}LL\nOctane 98: ${fuel[1]}LL\nDiesel: ${fuel[2]}LL\nGas: ${fuel[3]}LL\nCrude Oil: ${fuel[4]}$`);
+            await message.channel.send(`Octane 95: ${fuel[1]}\nOctane 98: ${fuel[2]}\nDiesel: ${fuel[3]}\nGas: ${fuel[4]}\nCrude Oil: ${fuel[5]}`);
 
         } catch(error) {
             console.log(error);
