@@ -13,7 +13,7 @@ export const fuel: CommandInt = {
                 return ;
             }
 
-            await message.channel.send(`Octane 95: ${fuelRate[1]}\nOctane 98: ${fuelRate[2]}\nDiesel: ${fuelRate[3]}\nGas: ${fuelRate[4]}\nCrude Oil: ${fuelRate[5]}\n${fuelRate[0]}`);
+            await message.channel.send(`Octane 98: ${fuelRate[1]}\nOctane 95: ${fuelRate[2]}\nGas: ${fuelRate[3]}\nDiesel: ${fuelRate[4]}\nCrude Oil: ${fuelRate[5]}\n${fuelRate[0]}`);
 
         } catch(error) {
             console.log(error);
