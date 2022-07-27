@@ -13,6 +13,6 @@ module.exports = {
             return ;
         }
 
-        await interaction.reply(`Octane 98: ${fuelRate[2]}\nOctane 95: ${fuelRate[1]}\nGas: ${fuelRate[4]}\nDiesel: ${fuelRate[3]}\nCrude Oil: ${fuelRate[5]}\n${fuelRate[0]}`);
+        await interaction.reply(`Octane 98: ${fuelRate[1]}\nOctane 95: ${fuelRate[2]}\nGas: ${fuelRate[3]}\nDiesel: ${fuelRate[4]}\nCrude Oil: ${fuelRate[5]}\n${fuelRate[0]}`);
     },
 };
