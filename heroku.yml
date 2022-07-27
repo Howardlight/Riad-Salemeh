@@ -1,0 +1,8 @@
+setup:
+  docker:
+    worker: Dockerfile
+run:
+  worker:
+    command:
+      - node -r dotenv/config ./prod/index.js
+    image: worker
