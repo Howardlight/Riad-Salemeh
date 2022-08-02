@@ -1,11 +1,10 @@
-const { CommandInteraction } = require("@discordjs/builders");
-import { SlashCommandBuilder } from "@discordjs/builders";
+import { SlashCommandBuilder, CommandInteraction} from "discord.js";
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('fuel')
         .setDescription("Get price of fuel in LL"),
-    async execute(interaction: typeof CommandInteraction) {
+    async execute(interaction: CommandInteraction) {
 
 
         if(fuelRate[0] === "NULL") {

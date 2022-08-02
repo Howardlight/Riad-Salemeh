@@ -1,4 +1,4 @@
-import { Client, Intents, Collection, Interaction, Message } from "discord.js";
+import { Client, GatewayIntentBits, Partials, Collection, Interaction, Message, CommandInteraction } from "discord.js";
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 import { onInteraction } from "./events/onInteraction";
@@ -16,11 +16,11 @@ export const cooldowns = new Collection();
 
     // Validates Env variables
     // if assertion fails, stops the bot
-    if(!validateEnv) return;
+    // if(!validateEnv) return;
 
     const PREFIX = process.env.PREFIX as string;
     const client = new Client(
-        { intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES]}
+        { intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages]}
     );
 
     for (const file of interactionFiles) {

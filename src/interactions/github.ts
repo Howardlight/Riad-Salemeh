@@ -1,12 +1,11 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-const { CommandInteraction } = require("@discordjs/builders");
+import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('github')
 		.setDescription('Returns link to bot\'s github'),
-	async execute(interaction: typeof CommandInteraction) {
+	async execute(interaction: CommandInteraction) {
         await interaction.reply(`https://github.com/Howardlight/Riad-Salemeh-TS`);
 	},
 };

@@ -1,12 +1,12 @@
-const { CommandInteraction } = require("@discordjs/builders");
+import { CommandInteraction, InteractionType, Interaction } from "discord.js";
 import { interactions } from "..";
 // import { deleteCommands } from "../utils/delete-commands";
 
-export const onInteraction = async (interaction: typeof CommandInteraction) => {
+export const onInteraction = async (interaction: Interaction) => {
 
 
     // console.log(`${interaction.user.tag} in #${interaction.channel!} triggered an interaction.`);
-    if (!interaction.isCommand()) return;
+    if (interaction.type !== InteractionType.ApplicationCommand) return;
 
     const command: any = interactions.get(interaction.commandName);
 

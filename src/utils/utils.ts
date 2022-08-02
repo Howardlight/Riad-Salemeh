@@ -1,85 +1,82 @@
-const fetch = require("../../node_modules/node-fetch");
+import fetch from "node-fetch";
 
-export async function getLirarateAPIData(date: Date)  {
+// export async function getLirarateAPIData(date: Date)  {
 
-    // Process Data
-    // Process String and concat it to URL
-    let URL: string = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t"
-    let version: string = `${date.getFullYear()}${date.getMonth()+1}${date.getDate()}${date.getHours()}`;
-    let API = URL.concat(version);
+//     // Process Data
+//     // Process String and concat it to URL
+//     let URL: string = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t"
+//     let version: string = `${date.getFullYear()}${date.getMonth()+1}${date.getDate()}${date.getHours()}`;
+//     let API = URL.concat(version);
 
-    // Logs
-    // console.log("URL: ", URL);
-    // console.log("version: ", version);
-    // console.log("API: ", API);
-
-
-    const res: Response = await fetch(API,{
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
-    if(!res.ok) {
-        if(res.status === 404) throw console.error("404 RESPONSE ERROR at lirarate | getAPIData");
-        else if (res.status === 401) throw console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");        
-    }
-    else {
-        const data = await res.json();
-        // console.log(data);
-        return data;
-    };
-};
+//     // Logs
+//     // console.log("URL: ", URL);
+//     // console.log("version: ", version);
+//     // console.log("API: ", API);
 
 
-/**
- * //TODO: Finish this
- * @returns data: FuelResponse[] | undefined
- */
-async function getFuelData() {
+//     const res: any = await fetch(API,{
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     });
+//     if(!res.ok) {
+//         if(res.status === 404) throw console.error("404 RESPONSE ERROR at lirarate | getAPIData");
+//         else if (res.status === 401) throw console.error("401 RESPONSE ERROR at lirarate | getAPIData\nAPI is not available at the moment");        
+//     }
+//     else {
+//         const data = await res.json();
+//         // console.log(data);
+//         return data;
+//     };
+// };
 
-    //TODO: Make this Safe, incase there is no response
+
+// /**
+//  * //TODO: Finish this
+//  * @returns data: FuelResponse[] | undefined
+//  */
+// async function getFuelData() {
+
+//     //TODO: Make this Safe, incase there is no response
     
-    // console.log(`getEESTTime: ${getEESTTime(3)}`);
-    let URL: string = `https://lirarate.org/wp-json/lirarate/v2/fuel?currency=LBP&_ver=t${formatTimeForLirarate(getEESTTime(3))}`;
+//     // console.log(`getEESTTime: ${getEESTTime(3)}`);
+//     let URL: string = `https://lirarate.org/wp-json/lirarate/v2/fuel?currency=LBP&_ver=t${formatTimeForLirarate(getEESTTime(3))}`;
 
-    try{
-        const res: Response = await fetch(URL);
-        const data: FuelResponse[] = await res.json();
+//     try{
+//         const res: any = await fetch(URL);
+//         const data: FuelResponse[] = await res.json();
 
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log(error);
-        return undefined;
-    }
-}
-
-
-/**
- * //TODO: finish this
- * @returns [OCTANE95, OCTANE98, DIESEL, GAS, OIL] 
- */
-export async function getLatestFuel() {
-    const data = await getFuelData();
+//         console.log(data);
+//         return data;
+//     } catch (error) {
+//         console.log(error);
+//         return undefined;
+//     }
+// }
 
 
-    if(data == undefined) return undefined;
-    //NOTE: RETURNS DATA WITHOUT DATE OF EACH ONE
+// /**
+//  * //TODO: finish this
+//  * @returns [OCTANE95, OCTANE98, DIESEL, GAS, OIL] 
+//  */
+// export async function getLatestFuel() {
+//     const data = await getFuelData();
 
-    const fuel = [];
-    fuel.push(data[0]["data"].pop()![1]); // OCTANE 95
-    fuel.push(data[1]["data"].pop()![1]); // OCTANE 98
-    fuel.push(data[2]["data"].pop()![1]); // DIESEL
-    fuel.push(data[3]["data"].pop()![1]); // GAS
-    fuel.push(data[4]["data"].pop()![1]); //BRENT CRUDE OIL (USD)
 
-    // console.log(fuel);
-    return fuel;
-}
+//     if(data == undefined) return undefined;
+//     //NOTE: RETURNS DATA WITHOUT DATE OF EACH ONE
+
+//     const fuel = [];
+//     fuel.push(data[0]["data"].pop()![1]); // OCTANE 95
+//     fuel.push(data[1]["data"].pop()![1]); // OCTANE 98
+//     fuel.push(data[2]["data"].pop()![1]); // DIESEL
+//     fuel.push(data[3]["data"].pop()![1]); // GAS
+//     fuel.push(data[4]["data"].pop()![1]); //BRENT CRUDE OIL (USD)
+
+//     // console.log(fuel);
+//     return fuel;
+// }
 
 export function timeDiffCalc(futureDate: Date, nowDate: Date) {
     let diffInMilliSeconds = Math.abs(futureDate.getTime() - nowDate.getTime()) / 1000;

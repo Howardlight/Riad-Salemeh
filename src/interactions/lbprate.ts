@@ -1,12 +1,11 @@
-const { CommandInteraction } = require("@discordjs/builders");
-import { SlashCommandBuilder } from "@discordjs/builders";
+import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 import { quirkline } from "../utils/utils";
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('lbprate')
         .setDescription("Get current black market Lira rate"),
-    async execute(interaction: typeof CommandInteraction) {
+    async execute(interaction: CommandInteraction) {
 
 
         if(marketRate[1] === "NULL") {

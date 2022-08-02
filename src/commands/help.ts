@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { ChannelType, Message } from "discord.js";
 import { CommandInt } from "../interfaces/CommandInt";
 import { CommandList } from "./_CommandList";
 
@@ -34,7 +34,7 @@ export const help: CommandInt = {
 
             return message.author.send(data.join(" ").toString())
                 .then(() => {
-                    if(message.channel.type === 'DM') return;
+                    if(message.channel.type === ChannelType.DM) return;
                     message.reply(`I've sent you a DM with all my commands!`);
                 })
                 .catch(error => {

@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { CommandInteraction, MessageEmbed } from "discord.js";
+import { SlashCommandBuilder, CommandInteraction, EmbedBuilder } from "discord.js";
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -7,7 +6,7 @@ module.exports = {
 		.setDescription('Returns link to invite the bot'),
 	async execute(interaction: CommandInteraction) {
 
-		const Embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
         .setDescription("[Click Me](https://discord.com/api/oauth2/authorize?client_id=826815896718540850&permissions=2147535872&scope=bot%20applications.commands) to invite the bot!")
         .addFields(
             // { name: '\u200B', value: '\u200B' },
@@ -15,6 +14,6 @@ module.exports = {
         )
 
 		// https://discord.com/oauth2/authorize?client_id=826815896718540850&scope=bot&permissions=36826705
-        await interaction.reply({ embeds: [Embed]});
+        await interaction.reply({ embeds: [embed]});
 	},
 };
