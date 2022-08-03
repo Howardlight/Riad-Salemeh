@@ -18,4 +18,6 @@ COPY --chown=node:node src ./src
 
 RUN pnpm install
 
+RUN rm -v -rf src
+
 CMD ["pnpm", "run", "start"]
