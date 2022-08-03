@@ -2,7 +2,7 @@ import { Client, GatewayIntentBits, Partials, Collection, Interaction, Message, 
 import { validateEnv } from "./utils/validateEnv";
 import { onMessage } from "./events/onMessage";
 import { onInteraction } from "./events/onInteraction";
-import { getWebsiteData } from "./getRate";
+import { getWebsiteData } from "./utils/getRate";
 
 const fs = require("fs");
 const path = require("path");

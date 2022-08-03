@@ -1,15 +1,12 @@
 // @ts-ignore
 import CheerioAPI = cheerio.CheerioAPI;
-
-const Cheerio = require("../node_modules/cheerio");
-const fetch = require("../node_modules/node-fetch");
-
+import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
 // use Fetch to get the website 
 const getRawData = (URL: string) => {
     return fetch(URL)
-    .then((response: Response) => response.text())
+    .then((response: any) => response.text())
     .then((data: string) => {
         // console.log(data);
         return data;
@@ -24,7 +21,7 @@ const URL: string = "https://lbprate.com/";
 //TODO: Add TSDocs
 export const getWebsiteData = async () => {
     const lbpRaw = await getRawData(URL);
-    const parsedData: CheerioAPI = Cheerio.load(lbpRaw);
+    const parsedData: CheerioAPI = cheerio.load(lbpRaw);
 
     let marketRateList: string[] = []; // i refers to the index, e refers to the element
     parsedData(".text-white").each(function (i: number, e: Element) {
