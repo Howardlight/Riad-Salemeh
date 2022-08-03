@@ -16,7 +16,7 @@ export const cooldowns = new Collection();
 
     // Validates Env variables
     // if assertion fails, stops the bot
-    // if(!validateEnv) return;
+    if(!validateEnv) return;
 
     const PREFIX = process.env.PREFIX as string;
     const client = new Client(
