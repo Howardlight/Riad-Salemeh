@@ -151,7 +151,7 @@ export const quirkline = [
     "Ana ma 5assni, bss llira lyom:",
     "Bisallem 3lek Michel Aoun:",
     "Discount 51%, bss la 2elak:",
-    "100% safer than botler!",
+    // "100% safer than botler!",
 ];
 
 /**
