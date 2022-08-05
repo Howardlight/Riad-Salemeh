@@ -31,7 +31,7 @@ module.exports = {
 			let out: string;
 			
 			
-			if(conversionType.value == 0) out = `**${inputValue.value}** LBP equals **${numberWithCommas(Math.round(Number(inputValue.value) / Number(marketRate[1].slice(1, ).replace(/\D/g, "")), 2))}** USD.\nRate used: **${numberWithCommas(Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.`;
+			if(conversionType.value == 0) out = `**${inputValue.value}** LBP equals **${numberWithCommas(Math.round(Number(inputValue.value) / Number(marketRate[1].slice(1, ).replace(/\D/g, ""))))}** USD.\nRate used: **${numberWithCommas(Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.`;
 			else out = `**${inputValue.value}** $ equals **${numberWithCommas(Number(inputValue.value) * Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.\nRate used: **${numberWithCommas(Number(marketRate[1].slice(1,).replace(/\D/g, "")))}** LL.`;
 			
 			
