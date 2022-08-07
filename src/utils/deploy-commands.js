@@ -1,9 +1,7 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const path = require("path");
 const fs = require("fs");
-const {Snowflake} = require("discord.js");
+const {Snowflake, SlashCommandBuilder, REST} = require("discord.js");
 
 
 // If deploying to Global, set ID and TOKEN to Salemeh, else use BonBon
