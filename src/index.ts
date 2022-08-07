@@ -10,7 +10,6 @@ export const interactions = new Collection();
 const dirPath = path.resolve(__dirname, "./interactions");
 const interactionFiles = fs.readdirSync(dirPath).filter((file: String) => file.endsWith('.js'));
 
-export const cooldowns = new Collection();
 (async () => {
 
     // Validates Env variables
